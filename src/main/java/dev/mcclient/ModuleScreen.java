@@ -39,10 +39,10 @@ public final class ModuleScreen extends Screen {
         draw.fill(0, 0, width, height, 0xA0080B12);
         draw.fill(left, top, left + 320, top + 278, 0xF0182030);
         draw.fill(left, top, left + 320, top + 3, 0xFF64D8FF);
-        draw.drawTextWithShadow(textRenderer, "MC CLIENT / MODULES", left + 20, top + 17, 0x64D8FF);
-        draw.drawTextWithShadow(textRenderer, "Changes save automatically", left + 20, top + 32, 0xA3AEC4);
-        draw.drawTextWithShadow(textRenderer, "Flight: WASD + Space / Sneak", left + 20, top + 201, 0xA3AEC4);
-        draw.drawTextWithShadow(textRenderer, "Servers may reject module actions.", left + 20, top + 218, 0xA3AEC4);
+        draw.drawTextWithShadow(textRenderer, "MC CLIENT / MODULES", left + 20, top + 17, 0xFF64D8FF);
+        draw.drawTextWithShadow(textRenderer, "Changes save automatically", left + 20, top + 32, 0xFFA3AEC4);
+        draw.drawTextWithShadow(textRenderer, "Flight: WASD + Space / Sneak", left + 20, top + 201, 0xFFA3AEC4);
+        draw.drawTextWithShadow(textRenderer, "Servers may reject module actions.", left + 20, top + 218, 0xFFA3AEC4);
         super.render(draw, mouseX, mouseY, delta);
     }
 }

@@ -20,7 +20,7 @@ def default_mods():
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--mods-dir', type=Path, default=default_mods(), help='Instance mods directory; required for custom launchers')
-    parser.add_argument('--jar', type=Path, default=Path(__file__).resolve().parents[1] / 'build/libs/mcclient-1.0.0.jar')
+    parser.add_argument('--jar', type=Path, default=Path(__file__).resolve().parents[1] / 'build/libs/mcclient-1.1.0+mc1.21.11.jar')
     args = parser.parse_args()
     if not args.jar.is_file():
         parser.error(f'Build or download the client JAR first: {args.jar}')
@@ -46,7 +46,7 @@ def main():
         parser.error('Remove old MC Client JARs before installing: ' + ', '.join(map(str, other_versions)))
     shutil.copy2(args.jar, destination)
     print(f'Installed: {destination}')
-    print('Requires Fabric Loader for Minecraft 1.21.1 and Fabric API in the same mods folder.')
+    print('Requires Fabric Loader for Minecraft 1.21.11 and Fabric API in the same mods folder.')
 
 
 if __name__ == '__main__':

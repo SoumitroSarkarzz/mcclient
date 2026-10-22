@@ -6,5 +6,5 @@
   "description": "Configurable combat, movement and HUD client.",
   "environment": "client",
   "entrypoints": { "client": ["dev.mcclient.McClient"] },
-  "depends": { "fabricloader": ">=0.16.10", "minecraft": "~1.21.1", "java": ">=21", "fabric-api": "*" }
+  "depends": { "fabricloader": ">=0.19.5", "minecraft": "1.21.11", "java": ">=21", "fabric-api": ">=0.141.6" }
 }
