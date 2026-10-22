@@ -1,0 +1,10 @@
+{
+  "schemaVersion": 1,
+  "id": "mcclient",
+  "version": "${version}",
+  "name": "MC Client",
+  "description": "Configurable combat, movement and HUD client.",
+  "environment": "client",
+  "entrypoints": { "client": ["dev.mcclient.McClient"] },
+  "depends": { "fabricloader": ">=0.16.10", "minecraft": "~1.21.1", "java": ">=21", "fabric-api": "*" }
+}
