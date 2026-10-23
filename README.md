@@ -1,5 +1,7 @@
 # MC Client — Fabric 1.21.11
 
+For the separate desktop profile manager with offline test profiles and Microsoft account verification, see [MC Profiles](profile-manager/README.md). It runs outside Minecraft and is not installed in the mods folder.
+
 Client-side Minecraft mod for Java 21, Fabric Loader 0.19.2+, and Fabric API 0.141.6+1.21.11.
 
 ## Features

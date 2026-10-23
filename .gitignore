@@ -3,3 +3,9 @@ build/
 run/
 .idea/
 *.iml
+.venv/
+__pycache__/
+*.pyc
+*.egg-info/
+.pytest_cache/
+profile-manager/dist/

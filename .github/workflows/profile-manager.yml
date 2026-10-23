@@ -1,0 +1,27 @@
+name: Profile manager
+on:
+  push:
+    paths: ['profile-manager/**', '.github/workflows/profile-manager.yml']
+  pull_request:
+    paths: ['profile-manager/**', '.github/workflows/profile-manager.yml']
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install ./profile-manager 'pytest>=8,<9' build
+      - run: xvfb-run -a python -m pytest -q
+        working-directory: profile-manager
+      - run: python -m build
+        working-directory: profile-manager
+      - uses: actions/upload-artifact@v4
+        with:
+          name: mcprofiles-python-package
+          path: profile-manager/dist/*
+          if-no-files-found: error

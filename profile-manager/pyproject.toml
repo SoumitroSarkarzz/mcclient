@@ -1,0 +1,20 @@
+[build-system]
+requires = ["setuptools>=75"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "mcprofiles"
+version = "0.1.0"
+description = "Local Minecraft test profiles and Microsoft account verification"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = ["msal>=1.31,<2", "keyring>=25,<26", "requests>=2.32,<3"]
+
+[project.scripts]
+mcprofiles = "mcprofiles.ui:main"
+
+[tool.setuptools.packages.find]
+include = ["mcprofiles*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
