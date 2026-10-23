@@ -3,7 +3,7 @@
   "id": "mcclient",
   "version": "${version}",
   "name": "MC Client",
-  "description": "Configurable combat, movement and HUD client.",
+  "description": "Configurable HUD, modules and local test profile manager.",
   "environment": "client",
   "entrypoints": { "client": ["dev.mcclient.McClient"] },
   "depends": { "fabricloader": ">=0.19.2", "minecraft": "1.21.11", "java": ">=21", "fabric-api": ">=0.141.6" }

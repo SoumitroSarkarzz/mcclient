@@ -3,6 +3,11 @@ package dev.mcclient;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
 import net.fabricmc.fabric.api.client.keybinding.v1.KeyBindingHelper;
+import net.fabricmc.fabric.api.client.screen.v1.ScreenEvents;
+import net.fabricmc.fabric.api.client.screen.v1.Screens;
+import net.minecraft.client.gui.screen.TitleScreen;
+import net.minecraft.client.gui.widget.ButtonWidget;
+import net.minecraft.text.Text;
 import net.fabricmc.fabric.api.client.rendering.v1.hud.HudElementRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.hud.VanillaHudElements;
 import net.minecraft.client.MinecraftClient;
@@ -24,7 +29,7 @@ public final class McClient implements ClientModInitializer {
     public static ClientConfig config;
     public static boolean aura, flight, sprint;
     private static final KeyBinding.Category CATEGORY = KeyBinding.Category.create(Identifier.of("mcclient", "modules"));
-    private KeyBinding menuKey, auraKey, flightKey;
+    private KeyBinding menuKey, auraKey, flightKey, profilesKey;
     private boolean appliedSprint;
     private static KeyBinding key(String name, int code) {
         return KeyBindingHelper.registerKeyBinding(new KeyBinding("key.mcclient." + name, InputUtil.Type.KEYSYM, code, CATEGORY));
@@ -34,6 +39,13 @@ public final class McClient implements ClientModInitializer {
         menuKey = key("menu", GLFW.GLFW_KEY_RIGHT_SHIFT);
         auraKey = key("aura", GLFW.GLFW_KEY_R);
         flightKey = key("flight", GLFW.GLFW_KEY_G);
+        profilesKey = key("profiles", GLFW.GLFW_KEY_F8);
+        ScreenEvents.AFTER_INIT.register((mc, screen, w, h) -> {
+            if (screen instanceof TitleScreen) {
+                Screens.getButtons(screen).add(ButtonWidget.builder(Text.literal("MC Profiles"), b -> mc.setScreen(new ProfileScreen(screen)))
+                    .dimensions(w - 110, 6, 104, 20).build());
+            }
+        });
         ClientTickEvents.END_CLIENT_TICK.register(this::tick);
         HudElementRegistry.attachElementBefore(VanillaHudElements.CHAT, Identifier.of("mcclient", "status"), (draw, ticks) -> {
             MinecraftClient mc = MinecraftClient.getInstance();
@@ -48,6 +60,7 @@ public final class McClient implements ClientModInitializer {
     }
     public static String state(boolean value) { return value ? "ON" : "OFF"; }
     private void tick(MinecraftClient mc) {
+        while (profilesKey.wasPressed()) mc.setScreen(new ProfileScreen(mc.currentScreen));
         while (menuKey.wasPressed()) if (mc.player != null) mc.setScreen(new ModuleScreen());
         if (mc.player == null || mc.world == null) { aura = flight = sprint = false; appliedSprint = false; return; }
         while (auraKey.wasPressed()) aura = !aura;

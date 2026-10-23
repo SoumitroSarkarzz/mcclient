@@ -29,6 +29,8 @@ public final class ModuleScreen extends Screen {
             McClient.config.flightSpeed = McClient.config.flightSpeed >= 0.95 ? 0.1 : Math.round((McClient.config.flightSpeed + 0.1) * 10) / 10.0;
             b.setMessage(speedLabel()); McClient.config.save();
         }).dimensions(left + 162, top + 166, 138, 20).build());
+        addDrawableChild(ButtonWidget.builder(Text.literal("MC Profiles [F8]"), b -> client.setScreen(new ProfileScreen(this)))
+            .dimensions(left + 20, top + 194, 280, 20).build());
         addDrawableChild(ButtonWidget.builder(Text.literal("Done"), b -> close()).dimensions(left + 20, top + 244, 280, 20).build());
     }
     private Text rangeLabel() { return Text.literal(String.format(java.util.Locale.ROOT, "Range: %.1f", McClient.config.range)); }
@@ -41,7 +43,6 @@ public final class ModuleScreen extends Screen {
         draw.fill(left, top, left + 320, top + 3, 0xFF64D8FF);
         draw.drawTextWithShadow(textRenderer, "MC CLIENT / MODULES", left + 20, top + 17, 0xFF64D8FF);
         draw.drawTextWithShadow(textRenderer, "Changes save automatically", left + 20, top + 32, 0xFFA3AEC4);
-        draw.drawTextWithShadow(textRenderer, "Flight: WASD + Space / Sneak", left + 20, top + 201, 0xFFA3AEC4);
         draw.drawTextWithShadow(textRenderer, "Servers may reject module actions.", left + 20, top + 218, 0xFFA3AEC4);
         super.render(draw, mouseX, mouseY, delta);
     }
