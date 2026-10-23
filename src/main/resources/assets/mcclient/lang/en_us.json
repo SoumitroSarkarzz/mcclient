@@ -3,5 +3,8 @@
   "key.mcclient.menu": "Open module menu",
   "key.mcclient.aura": "Toggle Kill Aura",
   "key.mcclient.flight": "Toggle Flight",
-  "key.mcclient.profiles": "Open local profile manager"
+  "key.mcclient.profiles": "Open local profile manager",
+  "key.mcclient.crystal": "Toggle Crystal Aura",
+  "key.mcclient.totem": "Toggle Auto Totem",
+  "key.mcclient.autolog": "Toggle Auto Log"
 }
