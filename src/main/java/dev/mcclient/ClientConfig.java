@@ -12,6 +12,8 @@ public final class ClientConfig {
     private static final Path FILE = FabricLoader.getInstance().getConfigDir().resolve("mcclient.json");
     public boolean hud = true;
     public boolean targetPlayers = false;
+    public boolean criticalAura = true;
+    public boolean autoJumpCrits = true;
     public double range = 3.0;
     public double flightSpeed = 0.3;
     public static ClientConfig load() {
